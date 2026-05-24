@@ -164,8 +164,8 @@ body {
 .heart {
     position: absolute;
 
-    top: 65px;
-    left: 50%;
+    top: 70px;
+    left: 55%;
 
     transform: translateX(-50%);
 
