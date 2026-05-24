@@ -1,0 +1,233 @@
+body {
+    margin: 0;
+    font-family: Georgia;
+    background: lavenderblush;
+
+    height: 100vh;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 🌸 BACKGROUND */
+.bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* 🌸 FLOWERS */
+.flower {
+    position: absolute;
+    font-size: 45px;
+    opacity: 0.6;
+}
+
+/* 💜 MAIN */
+.container {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* ✉️ ENVELOPE */
+#envelope {
+    width: 340px;
+    height: 220px;
+
+    position: relative;
+    cursor: pointer;
+
+    z-index: 10;
+
+    transition: filter 0.5s ease;
+}
+
+/* ✨ GLOW ON OPEN */
+#envelope.open {
+    filter:
+        drop-shadow(0 0 10px white)
+        drop-shadow(0 0 25px violet)
+        drop-shadow(0 0 50px deeppink);
+}
+
+/* 📩 FRONT BODY (PURPLE) */
+.front {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    background: #f3e6ff; /* 💜 soft purple */
+
+    border: 2px solid #d9b3ff;
+    border-radius: 8px;
+
+    z-index: 3;
+}
+
+/* ✉️ FLAP (DARKER PURPLE) */
+.flap {
+    position: absolute;
+
+    width: 0;
+    height: 0;
+
+    border-left: 170px solid transparent;
+    border-right: 170px solid transparent;
+
+    border-top: 110px solid #b57edc;
+
+    top: 0;
+
+    transform-origin: top;
+
+    transition: transform 0.9s ease;
+
+    z-index: 5;
+}
+
+/* OPEN FLAP */
+#envelope.open .flap {
+    transform: rotateX(180deg);
+}
+
+/* 📩 PAPER */
+.letter {
+    position: absolute;
+
+    width: 280px;
+    height: 180px;
+
+    background: white;
+
+    left: 30px;
+    top: 35px;
+
+    border-radius: 6px;
+
+    z-index: 2;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+
+    transition: transform 1.2s ease;
+}
+
+/* PAPER OUT */
+#envelope.open .letter {
+    transform: translateY(-200px);
+    z-index: 20;
+}
+
+/* 📐 SIDES */
+.left {
+    position: absolute;
+
+    width: 0;
+    height: 0;
+
+    border-top: 110px solid transparent;
+    border-bottom: 110px solid transparent;
+
+    border-right: 170px solid #e6ccff;
+
+    left: 0;
+
+    z-index: 2;
+}
+
+.right {
+    position: absolute;
+
+    width: 0;
+    height: 0;
+
+    border-top: 110px solid transparent;
+    border-bottom: 110px solid transparent;
+
+    border-left: 170px solid #e6ccff;
+
+    right: 0;
+
+    z-index: 2;
+}
+
+/* ❤️ HEART SEAL */
+.heart {
+    position: absolute;
+
+    top: 100px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 34px;
+
+    color: #ff4d4d;
+
+    z-index: 6;
+
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+
+    transition: opacity 0.5s ease;
+}
+
+/* hide heart when open */
+#envelope.open .heart {
+    opacity: 0;
+}
+
+/* 💌 MESSAGE */
+#message {
+    display: none;
+
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: white;
+    color: purple;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    width: 700px;
+    max-width: 90%;
+
+    max-height: 75vh;
+
+    overflow-y: auto;
+
+    text-align: center;
+
+    z-index: 999;
+
+    box-shadow:
+        0 0 15px rgba(186, 85, 211, 0.4),
+        0 0 35px rgba(186, 85, 211, 0.3),
+        0 0 60px rgba(186, 85, 211, 0.2);
+}
+
+/* TEXT */
+#typingText {
+    line-height: 1.7;
+    font-size: 20px;
+}
+
+/* 💜 HINT TEXT */
+#hint {
+    font-size: 22px;
+    color: purple;
+    font-weight: bold;
+}
